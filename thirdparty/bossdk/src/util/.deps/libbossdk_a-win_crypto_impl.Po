@@ -1,0 +1,4 @@
+util/libbossdk_a-win_crypto_impl.o: util/win_crypto_impl.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:

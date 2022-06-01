@@ -1,0 +1,4 @@
+util/libbossdk_a-windows_port.o: util/windows_port.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
