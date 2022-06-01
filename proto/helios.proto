@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package helios;
+
+option cc_generic_services = true;
+
+message EmojiReq {
+
+}
+
+message EmojiResp {
+
+}
+
+service HeliosService {
+    rpc emoji(EmojiReq) returns(EmojiResp);
+}
