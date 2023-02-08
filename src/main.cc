@@ -11,7 +11,7 @@ int main()
     sofa::pbrpc::RpcServer rpc_server(options);
 
     std::stringstream addr;
-    addr << "0.0.0.0:8123";
+    addr << "0.0.0.0:8000";
 
     if (!rpc_server.Start(addr.str())) {
         return EXIT_FAILURE;

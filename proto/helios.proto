@@ -4,14 +4,63 @@ package helios;
 
 option cc_generic_services = true;
 
-message EmojiReq {
+message Base64EncodeReq {
+    optional string data = 1;
+}
 
+message Base64EncodeResp {
+    optional string data = 1;
+    optional string data_base64 = 2;
+}
+
+message Base64DecodeReq {
+    optional string data_base64 = 1;
+}
+
+message Base64DecodeResp {
+    optional string data_base64 = 1;
+    optional string data = 2;
+}
+
+message Md5EncodeReq {
+    optional string data = 1;
+}
+
+message Md5EncodeResp {
+    optional string data = 1;
+    optional string data_md5 = 2;
+}
+
+message EmojiReq {
+    optional string key = 1;
+}
+
+message Emoji {
+    optional string name = 1;
+    optional string url = 2;
 }
 
 message EmojiResp {
+    repeated Emoji emojis = 1;
+}
 
+message BackgroundImageReq {
+    optional string key = 1;
+}
+
+message BackgroundImage {
+    optional string name = 1;
+    optional string url = 2;
+}
+
+message BackgroundImageResp {
+    repeated BackgroundImage background_images = 1;
 }
 
 service HeliosService {
+    rpc md5_encode(Md5EncodeReq) returns(Md5EncodeResp);
+    rpc base64_encode(Base64EncodeReq) returns(Base64EncodeResp);
+    rpc base64_decode(Base64DecodeReq) returns(Base64DecodeResp);
     rpc emoji(EmojiReq) returns(EmojiResp);
+    rpc background_image(BackgroundImageReq) returns(BackgroundImageResp);
 }
