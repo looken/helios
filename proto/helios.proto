@@ -31,6 +31,24 @@ message Md5EncodeResp {
     optional string data_md5 = 2;
 }
 
+message TimeStampToDateReq {
+    optional uint64 timestamp = 1;
+}
+
+message TimeStampToDateResp {
+    optional uint64 timestamp = 1;
+    optional string date = 2;
+}
+
+message DateToTimeStampReq {
+    optional string date = 2;
+}
+
+message DateToTimeStampResp {
+    optional string date = 1;
+    optional uint64 timestamp = 2;
+}
+
 message EmojiReq {
     optional string key = 1;
 }
@@ -57,10 +75,59 @@ message BackgroundImageResp {
     repeated BackgroundImage background_images = 1;
 }
 
+message ZuowenReq {
+    optional string key = 1;
+}
+
+message ZuowenInfo {
+    optional string grade = 1;
+    optional string type = 2;
+    optional string name = 3;
+    optional string url = 4;
+}
+
+message ZuowenResp {
+    repeated ZuowenInfo zuowen_infos = 1;
+}
+
+message ZuowenTypeReq {
+    optional string level = 1;
+}
+
+message ZuowenType {
+    optional string grade = 1;
+    repeated string types = 2;
+}
+
+message ZuowenTypeResp {
+    optional string level = 1;
+    repeated ZuowenType zuowen_types = 2;
+}
+
+message ToolsListReq {
+}
+
+message ToolsItem {
+    optional string id = 1;
+    optional string name = 2;
+}
+
+message ToolsListResp {
+    repeated ToolsItem content = 1;
+}
+
 service HeliosService {
+    rpc tools_list(ToolsListReq) returns(ToolsListResp);
+
     rpc md5_encode(Md5EncodeReq) returns(Md5EncodeResp);
     rpc base64_encode(Base64EncodeReq) returns(Base64EncodeResp);
     rpc base64_decode(Base64DecodeReq) returns(Base64DecodeResp);
+    rpc timestamp_to_date(TimeStampToDateReq) returns(TimeStampToDateResp);
+    rpc date_to_timestamp(DateToTimeStampReq) returns(DateToTimeStampResp);
+
     rpc emoji(EmojiReq) returns(EmojiResp);
     rpc background_image(BackgroundImageReq) returns(BackgroundImageResp);
+    rpc zuowen(ZuowenReq) returns(ZuowenResp);
+
+    rpc zuowen_type(ZuowenTypeReq) returns(ZuowenTypeResp);
 }

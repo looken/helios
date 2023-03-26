@@ -42,6 +42,16 @@ public:
                     helios::Md5EncodeResp* resp,
                     ::google::protobuf::Closure* done);
 
+    void timestamp_to_date(::google::protobuf::RpcController* controller,
+                           const helios::TimeStampToDateReq* req,
+                           helios::TimeStampToDateResp* resp,
+                           ::google::protobuf::Closure* done);
+
+    void date_to_timestamp(::google::protobuf::RpcController* controller,
+                           const helios::DateToTimeStampReq* req,
+                           helios::DateToTimeStampResp* resp,
+                           ::google::protobuf::Closure* done);
+
     void emoji(::google::protobuf::RpcController* controller,
                const helios::EmojiReq* req,
                helios::EmojiResp* resp,
@@ -51,6 +61,21 @@ public:
                           const helios::BackgroundImageReq* req,
                           helios::BackgroundImageResp* resp,
                           ::google::protobuf::Closure* done);
+
+    void zuowen(::google::protobuf::RpcController* controller,
+                const helios::ZuowenReq* req,
+                helios::ZuowenResp* resp,
+                ::google::protobuf::Closure* done);
+
+    void zuowen_type(::google::protobuf::RpcController* controller,
+                     const helios::ZuowenTypeReq* req,
+                     helios::ZuowenTypeResp* resp,
+                     ::google::protobuf::Closure* done);
+
+    void tools_list(::google::protobuf::RpcController* controller,
+                    const helios::ToolsListReq* req,
+                    helios::ToolsListResp* resp,
+                    ::google::protobuf::Closure* done);
 
 private:
     int listBuckets (Client& client);
